@@ -9,6 +9,7 @@
         <flink.version>1.4.2</flink.version>
         <hadoop.version>2.7.3</hadoop.version>
         <spring.version>5.0.5.RELEASE</spring.version>
+        <logback.verson>1.2.3</logback.verson>
         <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
         <scala.binary.version>2.11</scala.binary.version>
@@ -20,36 +21,36 @@
         <!-- Use this dependency if you are using the DataStream API -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_2.11</artifactId>
+            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+            <!--<scope>${scope.type</scope>-->
         </dependency>
         <!-- Use this dependency if you are using the DataSet API -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-java</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+            <!--<scope>${scope.type</scope>-->
         </dependency>
         <!-- Use this dependency if you are using the DataStream API -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-scala_2.11</artifactId>
+            <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+            <!--<scope>${scope.type</scope>-->
         </dependency>
         <!-- Use this dependency if you are using the DataSet API -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-scala_2.11</artifactId>
+            <artifactId>flink-scala_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+            <!--<scope>${scope.type</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients_2.11</artifactId>
+            <artifactId>flink-clients_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
+            <!--<scope>${scope.type</scope>-->
         </dependency>
 
         <!--scala runtime libs-->
@@ -79,58 +80,34 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- log -->
+        <!-- logback-core 是其它模块的基础设施，其它模块基于它构建，logback-core 提供了一些关键的通用机制 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.verson}</version>
+        </dependency>
+        <!-- 改善了 log4j，且自身实现了 SLF4J API，所以即使用 Logback 你仍然可以使用其他的日志实现，如原始的 Log4J，java.util.logging 等 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
-    <!--<build>-->
-        <!--<sourceDirectory>src/main/scala</sourceDirectory>-->
-        <!--<testSourceDirectory>src/test/scala</testSourceDirectory>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.scala-tools</groupId>-->
-                <!--<artifactId>maven-scala-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>compile</goal>-->
-                            <!--<goal>testCompile</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<scalaVersion>${scala.version}</scalaVersion>-->
-                    <!--<args>-->
-                        <!--<arg>-target:jvm-1.8</arg>-->
-                    <!--</args>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-eclipse-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<downloadSources>true</downloadSources>-->
-                    <!--<buildcommands>-->
-                        <!--<buildcommand>ch.epfl.lamp.sdt.core.scalabuilder</buildcommand>-->
-                    <!--</buildcommands>-->
-                    <!--<additionalProjectnatures>-->
-                        <!--<projectnature>ch.epfl.lamp.sdt.core.scalanature</projectnature>-->
-                    <!--</additionalProjectnatures>-->
-                    <!--<classpathContainers>-->
-                        <!--<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>-->
-                        <!--<classpathContainer>ch.epfl.lamp.sdt.launching.SCALA_CONTAINER</classpathContainer>-->
-                    <!--</classpathContainers>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
-    <!--<reporting>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.scala-tools</groupId>-->
-                <!--<artifactId>maven-scala-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<scalaVersion>${scala.version}</scalaVersion>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</reporting>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
