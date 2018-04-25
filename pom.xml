@@ -53,20 +53,6 @@
             <!--<scope>${scope.type</scope>-->
         </dependency>
 
-        <!--scala runtime libs-->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
-            <scope>${scope.type}</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-compiler</artifactId>
-            <version>${scala.version}</version>
-            <scope>${scope.type}</scope>
-        </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
