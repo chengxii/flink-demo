@@ -46,12 +46,12 @@
             <version>${flink.version}</version>
             <!--<scope>${scope.type</scope>-->
         </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients_${scala.binary.version}</artifactId>
-            <version>${flink.version}</version>
-            <!--<scope>${scope.type</scope>-->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.flink</groupId>-->
+            <!--<artifactId>flink-clients_${scala.binary.version}</artifactId>-->
+            <!--<version>${flink.version}</version>-->
+            <!--&lt;!&ndash;<scope>${scope.type</scope>&ndash;&gt;-->
+        <!--</dependency>-->
 
         <!-- test -->
         <dependency>
